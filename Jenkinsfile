@@ -18,10 +18,10 @@ pipeline{
 			}
 		}
 		stage('Deploy in Production Environment'){
-			timeout(time:5, unit:'DAYS'){
-				input message: 'Approve Production Deployment?'
-			}
 			steps{
+	                        timeout(time:5, unit:'DAYS'){
+        	                        input message: 'Approve Production Deployment?'
+                	        }
 				build job: 'java-web-project-prod_1'
 			}
 		}
