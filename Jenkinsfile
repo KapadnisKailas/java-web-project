@@ -12,5 +12,15 @@ pipeline{
 				}
 			}		
 		}
+		stage('Deploy in Staging Environment'){
+			steps{
+				build job: 'java-web-project-stag_1'
+			}
+		}
+		stage('Deploy in Production Environment'){
+			steps{
+				build job: 'java-web-project-prod_1'
+			}
+		}
 	}
 }
