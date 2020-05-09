@@ -4,5 +4,5 @@ ADD **/*.war /usr/local/tomcat/webapps
 
 EXPOSE 9093
 
-CMD ["catlina.sh","run"]
+CMD ["catalina.sh","run"]
 
