@@ -12,9 +12,17 @@ pipeline{
 				}
 			}		
 		}
-		stage{
+		stage('Deploy in Staging Environment'){
 			steps{
-				sh 'docker build . -t javawebproject:${env.BUILD_ID}'
+				build job: 'java-web-project-stag_1'
+			}
+		}
+		stage('Deploy in Production Environment'){
+			steps{
+	                        timeout(time:5, unit:'DAYS'){
+        	                        input message: 'Approve Production Deployment?'
+                	        }
+				build job: 'java-web-project-prod_1'
 			}
 		}
 	}
